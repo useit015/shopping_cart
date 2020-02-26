@@ -1,0 +1,104 @@
+.cart__overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 0;
+	background-color: #44444444;
+	color: #fff;
+	display: flex;
+	justify-content: flex-start;
+	transform: translateX(-100%);
+}
+
+.cart {
+	width: min(35rem, 100vw);
+	background-color: #444;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem 1rem;
+	transition: all 0.4s ease-in-out;
+	transform: translateX(-100%);
+}
+
+.cart__overlay.open {
+	width: 100vw;
+	transform: translateX(0);
+}
+
+.cart__overlay.open .cart {
+	box-shadow: 5px 0 25px #44444499;
+	transform: translateX(0);
+}
+
+.cart__title {
+	font-weight: 100;
+	font-size: 1.75em;
+	flex: 7% 0 0;
+}
+
+.cart__items {
+	flex: 80% 0 0;
+	margin: 0 1rem;
+	width: 100%;
+}
+
+.cart__item {
+	display: grid;
+	grid-template-columns: 5rem 2fr 1fr 1fr;
+	align-items: center;
+	margin: 2rem 1rem;
+	width: calc(100% - 2rem);
+	border-radius: 40px;
+	border: 1px solid #ffffff33;
+	height: 5rem;
+	overflow: hidden;
+}
+
+.cart__item-img {
+	margin: 0.5rem;
+	border-radius: 50%;
+	width: 4rem;
+	height: 4rem;
+	background-image: url(https://cdn.shopify.com/s/files/1/0052/1525/6640/products/mens-track-cargo-pants-streetwear-joggers-pants-m-3xlmusho-stationmusho-station-18040008_360x.jpg?v=1557515609);
+	background-position: center;
+	background-size: cover;
+	opacity: 0.8;
+}
+
+.cart__item-title {
+	font-weight: 100;
+	margin: 0 1rem 0.5rem;
+}
+
+.cart__quantity {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	font-weight: 100;
+	margin-bottom: 0.5rem;
+}
+
+.cart__quantity .minus,
+.cart__quantity .plus {
+	cursor: pointer;
+	font-size: 1.2em;
+	border: none;
+	background: none;
+	color: #fff;
+}
+
+.cart__delete {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 0.5rem;
+}
+
+.cart__delete-btn {
+	border: none;
+	background: none;
+	cursor: pointer;
+}

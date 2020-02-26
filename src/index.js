@@ -1,12 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './containers/App'
+import { AppProvider } from "./store/AppContext"
+import { CartProvider } from "./store/CartContext"
+import './styles/index.css'
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+	<AppProvider>
+		<CartProvider>
+			<App />
+		</CartProvider>,
+	</AppProvider>,
+	document.getElementById('root')
+)

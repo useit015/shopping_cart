@@ -1,0 +1,26 @@
+.App {
+	min-height: 100vh;
+	padding: 1rem 2rem;
+	background-color: #efefef;
+}
+
+.App.error,
+.App.loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 80%;
+	margin: 0 auto;
+	margin-bottom: 2rem;
+}
+
+.App.error h1 {
+	margin-bottom: 2rem;
+}
