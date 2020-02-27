@@ -25,10 +25,24 @@ export const reducer = (state = initialState, { type, payload }) => {
 				open: !state.open
 			}
 		case 'ADD_PRODUCT':
+			const existing = state.products.find(({ product }) =>
+				product.id === payload.product.id
+			)
+			if (existing) {
+				payload.setAlert({
+					text: 'This product is already in your cart',
+					color: '#dc3545'
+				})
+				return state
+			}
 			const newProduct = {
 				quantity: 1,
 				product: payload.product,
 			}
+			payload.setAlert({
+				text: 'Product added successfully',
+				color: '#28a745'
+			})
 			return newState(
 				state.open,
 				[ ...state.products, newProduct ]

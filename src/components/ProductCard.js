@@ -2,6 +2,8 @@ import React from 'react'
 import { Plus } from "./Plus"
 
 export const ProductCard = ({ product, addProduct }) => {
+	const addToCart = () => addProduct(product)
+
 	return (
 		<div className="product__item">
 			<div className="product__img" />
@@ -18,7 +20,7 @@ export const ProductCard = ({ product, addProduct }) => {
 					}
 				</div>
 			</div>
-			<div className="product__cta" onClick={ () => addProduct(product) }>
+			<div className="product__cta" onClick={ addToCart }>
 				<Plus />
 			</div>
 		</div>

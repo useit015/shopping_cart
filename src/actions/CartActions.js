@@ -2,10 +2,11 @@ export const toggleCartAction = () => ({
 	type: 'TOGGLE_CART'
 })
 
-export const addProductAction = product => ({
+export const addProductAction = (product, setAlert) => ({
 	type: 'ADD_PRODUCT',
 	payload: {
-		product
+		product,
+		setAlert
 	}
 })
 

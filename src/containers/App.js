@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import { Cart } from "../components/Cart"
+import { Cart } from './Cart'
+import { Alert } from '../containers/Alert'
 import { Navbar } from '../components/Navbar'
 import { AppContext } from '../store/AppContext'
 import { CartContext } from '../store/CartContext'
@@ -9,15 +10,8 @@ import { DisplayLoader } from '../components/DisplayLoader'
 import '../styles/App.css'
 
 const App = () => {
-	const {
-		cartState,
-		addProduct,
-		toggleCart,
-		removeProduct,
-		changeProductQuantity
-	} = useContext(CartContext)
-
 	const { appState, setError, unsetError } = useContext(AppContext)
+	const { addProduct, toggleCart } = useContext(CartContext)
 	const { error, loading, products } = appState
 
 	if (loading)
@@ -30,7 +24,8 @@ const App = () => {
 		<div className='App'>
 			<Navbar setError={ setError } toggleCart={ toggleCart } />
 			<ProductList products={ products } addProduct={ addProduct } />
-			<Cart state={ cartState } remove={ removeProduct } change={ changeProductQuantity } toggleCart={ toggleCart } />
+			<Cart />
+			<Alert />
 		</div>
 	)
 }

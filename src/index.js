@@ -9,7 +9,7 @@ ReactDOM.render(
 	<AppProvider>
 		<CartProvider>
 			<App />
-		</CartProvider>,
+		</CartProvider>
 	</AppProvider>,
 	document.getElementById('root')
 )

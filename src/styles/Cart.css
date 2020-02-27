@@ -4,11 +4,12 @@
 	left: 0;
 	height: 100vh;
 	width: 0;
-	background-color: #44444444;
+	background-color: #44444466;
 	color: #fff;
 	display: flex;
 	justify-content: flex-start;
 	transform: translateX(-100%);
+	z-index: 6;
 }
 
 .cart {
@@ -17,7 +18,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 2rem 1rem;
+	padding: 2.5rem 1rem;
 	transition: all 0.4s ease-in-out;
 	transform: translateX(-100%);
 }
@@ -32,35 +33,89 @@
 	transform: translateX(0);
 }
 
+.cart__overlay .cart > * {
+	opacity: 0;
+}
+
+.cart__overlay.open .cart > * {
+	opacity: 1;
+}
+
+.cart__top {
+	width: 80%;
+	padding: 0 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
 .cart__title {
 	font-weight: 100;
-	font-size: 1.75em;
+	font-size: 2.2em;
 	flex: 7% 0 0;
+	flex: 80% 0 0;
+}
+
+.cart__close {
+	border: none;
+	background: none;
+	cursor: pointer;
+	transition: transform 0.2s ease-in-out;
+}
+
+.cart__close:hover {
+	transform: scale(1.2);
 }
 
 .cart__items {
 	flex: 80% 0 0;
-	margin: 0 1rem;
-	width: 100%;
+	margin: 2rem 0rem 1rem 1.5rem;
+	width: 83%;
+	overflow-y: scroll;
+}
+
+.cart__items::-webkit-scrollbar-track {
+	border-radius: 7px;
+	background-color: transparent;
+}
+
+.cart__items::-webkit-scrollbar {
+	width: 12px;
+	background-color: transparent;
+}
+
+.cart__items::-webkit-scrollbar-thumb {
+	border-radius: 7px;
+	background-color: #ffffff55;
+	-webkit-box-shadow: inset 0 0 4px #ffffff77;
 }
 
 .cart__item {
 	display: grid;
-	grid-template-columns: 5rem 2fr 1fr 1fr;
+	grid-template-columns: 4rem 3fr 2fr 1fr;
 	align-items: center;
-	margin: 2rem 1rem;
-	width: calc(100% - 2rem);
+	margin: 1.5rem 0.5rem;
+	width: calc(100% - 1.5rem);
 	border-radius: 40px;
-	border: 1px solid #ffffff33;
-	height: 5rem;
+	border: 1px solid #ffffff44;
+	height: 4rem;
 	overflow: hidden;
+	transition: all 0.3s ease-in-out;
+}
+
+.cart__item:first-child {
+	margin-top: 0;
+}
+
+.cart__item:hover {
+	background-color: #ffffff08;
 }
 
 .cart__item-img {
 	margin: 0.5rem;
 	border-radius: 50%;
-	width: 4rem;
-	height: 4rem;
+	width: 3rem;
+	height: 3rem;
 	background-image: url(https://cdn.shopify.com/s/files/1/0052/1525/6640/products/mens-track-cargo-pants-streetwear-joggers-pants-m-3xlmusho-stationmusho-station-18040008_360x.jpg?v=1557515609);
 	background-position: center;
 	background-size: cover;
@@ -69,7 +124,7 @@
 
 .cart__item-title {
 	font-weight: 100;
-	margin: 0 1rem 0.5rem;
+	margin: 0 0.5rem 0.5rem;
 }
 
 .cart__quantity {
@@ -92,13 +147,61 @@
 .cart__delete {
 	width: 100%;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
-	padding-bottom: 0.5rem;
+	padding: 0 0.5rem;
+	transition: transform 0.3s ease-in-out;
+}
+
+.cart__delete-btn:hover {
+	transform: scale(1.2);
 }
 
 .cart__delete-btn {
 	border: none;
 	background: none;
 	cursor: pointer;
+	margin-bottom: 0.25rem;
+}
+
+.cart__total {
+	font-weight: 100;
+	font-size: 1.5em;
+	width: 75%;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+}
+
+.cart__checkout {
+	display: block;
+	width: 75%;
+	background-color: transparent;
+	border: 1px solid #ffffff44;
+	color: #fff;
+	font-weight: 100;
+	font-size: 1em;
+	padding: 1rem 0;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+	letter-spacing: 1px;
+}
+
+.cart__checkout:disabled {
+	opacity: 0.5 !important;
+	pointer-events: none;
+}
+
+.cart__checkout:hover {
+	background-color: #ffffff11;
+}
+
+.cart__empty {
+	text-transform: uppercase;
+	font-size: 1.3em;
+	font-weight: 100;
+	text-align: center;
+	justify-self: center;
+	margin-top: 4rem;
 }

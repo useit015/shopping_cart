@@ -1,0 +1,15 @@
+.alert {
+	position: fixed;
+	right: 5rem;
+	width: 20rem;
+	height: 40px;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+	font-weight: 100;
+	letter-spacing: 1px;
+	font-size: 1em;
+	box-shadow: 1px 3px 10px #44444499;
+}

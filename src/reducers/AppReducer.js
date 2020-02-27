@@ -1,7 +1,8 @@
 export const initialState = {
-	products: [],
 	error: false,
-	loading: true
+	loading: true,
+	products: [],
+	alerts: []
 }
 
 export const reducer = (state = initialState, { type, payload }) => {
@@ -22,6 +23,18 @@ export const reducer = (state = initialState, { type, payload }) => {
 				...state,
 				loading: false,
 				products: payload.products
+			}
+		case 'SET_ALERT':
+			return {
+				...state,
+				alerts: [ ...state.alerts, payload.alert ]
+			}
+		case 'UNSET_ALERT':
+			// eslint-disable-next-line
+			const [ first, ...rest ] = state.alerts
+			return {
+				...state,
+				alerts: rest
 			}
 		default:
 			return state

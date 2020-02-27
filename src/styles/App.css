@@ -24,3 +24,9 @@ header {
 .App.error h1 {
 	margin-bottom: 2rem;
 }
+
+@media only screen and (max-width: 500px) {
+	.App {
+		padding: 1rem;
+	}
+}

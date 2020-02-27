@@ -18,3 +18,67 @@ body {
 	border-radius: 5px;
 	border: 1px solid #999;
 }
+
+.opencart {
+	position: fixed;
+	bottom: 5vh;
+	right: 5vw;
+	z-index: 5;
+	width: 3.25rem;
+	height: 3.25rem;
+	border-radius: 50%;
+	border: none;
+	background-color: #444;
+	cursor: pointer;
+	box-shadow: 1px 3px 10px #444444cc;
+	transition: all 0.3s ease-in-out;
+}
+
+.opencart:hover {
+	transform: scale(1.05);
+	box-shadow: 1px 4px 12px #444444cc;
+}
+
+.opencart::after {
+	content: 'Your Cart';
+	position: absolute;
+	right: 120%;
+	top: 50%;
+	transform: translateY(-50%) scaleX(0);
+	transform-origin: right;
+	background-color: #444;
+	color: #fff;
+	padding: 0.5rem;
+	border-radius: 5px;
+	font-size: 0.8em;
+	font-weight: 100;
+	width: 4rem;
+	opacity: 0;
+	transition: all 0.2s 0.1s ease-out;
+	box-shadow: 1px 1px 5px #44444499;
+}
+
+.opencart::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 120%;
+	transform: rotate(45deg) translate(0, -20%) scaleX(0);
+	transform-origin: right;
+	width: 0.5rem;
+	height: 0.5rem;
+	background-color: #444;
+	opacity: 0;
+	transition: all 0.2s 0.1s ease-out;
+	box-shadow: 1px 1px 5px #44444499;
+}
+
+.opencart:hover::after {
+	opacity: 1;
+	transform: translateY(-50%) scaleX(1);
+}
+
+.opencart:hover::before {
+	opacity: 1;
+	transform: rotate(45deg) translate(0, -20%) scaleX(1);
+}

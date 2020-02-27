@@ -1,7 +1,13 @@
 import Axios from 'axios'
 import React, { useReducer, createContext, useCallback, useEffect } from 'react'
 import { initialState, reducer } from "../reducers/AppReducer"
-import { errorAction, setProductsAction, setLoading } from "../actions/AppActions"
+import {
+	setLoading,
+	errorAction,
+	setAlertAction,
+	unsetAlertAction,
+	setProductsAction
+} from "../actions/AppActions"
 
 export const AppContext = createContext()
 
@@ -15,6 +21,17 @@ export const AppProvider = ({ children }) => {
 
 	const unsetError = useCallback(
 		() => dispatch(errorAction(false)),
+		[ dispatch ]
+	)
+
+	const setAlert = useCallback(
+		alert => {
+			dispatch(setAlertAction(alert))
+			setTimeout(
+				() => dispatch(unsetAlertAction()),
+				5000
+			)
+		},
 		[ dispatch ]
 	)
 
@@ -35,7 +52,12 @@ export const AppProvider = ({ children }) => {
 	}, [ fetchProducts ])
 
 	return (
-		<AppContext.Provider value={ { appState, setError, unsetError } }>
+		<AppContext.Provider value={ {
+			setAlert,
+			appState,
+			setError,
+			unsetError
+		} }>
 			{ children }
 		</AppContext.Provider>
 	)
