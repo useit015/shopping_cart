@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import React, { useReducer, createContext, useCallback, useEffect } from 'react'
+import React, { useReducer, createContext, useEffect } from 'react'
 import { initialState, reducer } from "../reducers/AppReducer"
 import {
 	setLoading,
@@ -14,42 +14,26 @@ export const AppContext = createContext()
 export const AppProvider = ({ children }) => {
 	const [ appState, dispatch ] = useReducer(reducer, initialState)
 
-	const setError = useCallback(
-		() => dispatch(errorAction(true)),
-		[ dispatch ]
-	)
+	const setError = () => dispatch(errorAction(true))
 
-	const unsetError = useCallback(
-		() => dispatch(errorAction(false)),
-		[ dispatch ]
-	)
+	const unsetError = () => dispatch(errorAction(false))
 
-	const setAlert = useCallback(
-		alert => {
-			dispatch(setAlertAction(alert))
-			setTimeout(
-				() => dispatch(unsetAlertAction()),
-				5000
-			)
-		},
-		[ dispatch ]
-	)
-
-	const fetchProducts = useCallback(
-		() => {
-			dispatch(setLoading())
-			Axios.get('http://localhost:4000/items')
-				.then(res => res.data)
-				.then(setProductsAction)
-				.then(dispatch)
-				.catch(setError)
-		},
-		[ setError, dispatch ]
-	)
+	const setAlert = alert => {
+		dispatch(setAlertAction(alert))
+		setTimeout(
+			() => dispatch(unsetAlertAction()),
+			5000
+		)
+	}
 
 	useEffect(() => {
-		fetchProducts()
-	}, [ fetchProducts ])
+		dispatch(setLoading())
+		Axios.get('http://localhost:4000/items')
+			.then(res => res.data)
+			.then(setProductsAction)
+			.then(dispatch)
+			.catch(setError)
+	}, [])
 
 	return (
 		<AppContext.Provider value={ {
