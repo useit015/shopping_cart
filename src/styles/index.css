@@ -19,6 +19,25 @@ body {
 	border: 1px solid #999;
 }
 
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 1250px;
+	margin: 0 auto;
+	padding: 0 2rem;
+	flex-wrap: wrap;
+}
+
+header > h1 {
+	font-weight: 100;
+	font-size: 2.5em;
+}
+
+header > * {
+	margin-bottom: 1rem;
+}
+
 .opencart {
 	position: fixed;
 	bottom: 5vh;

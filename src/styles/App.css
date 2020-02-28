@@ -12,15 +12,6 @@
 	flex-direction: column;
 }
 
-header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	max-width: 80%;
-	margin: 0 auto;
-	margin-bottom: 2rem;
-}
-
 .App.error h1 {
 	margin-bottom: 2rem;
 }
